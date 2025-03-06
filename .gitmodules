@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = C:\\Users\\LENOVO\\Downloads\\Weather_App\\backend
+[submodule "frontend"]
+	path = frontend
+	url = C:\\Users\\LENOVO\\Downloads\\Weather_App\\frontend

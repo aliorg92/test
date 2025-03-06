@@ -1,0 +1,3 @@
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204  # Retourne un code de statut 204 (Pas de contenu)

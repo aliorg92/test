@@ -1,0 +1,29 @@
+<div class="mycontainer">
+    <div class="card text-white bg-primary m-5" style="max-width: 18rem;">
+        <div class="card-header text-center">
+            <h2>{{city_name}}</h2>
+            <img src="{{iconURL}}" alt="weather image">
+        </div>
+        <div class="card-body">
+            <p class="card-text">Summary: {{ summary}}</p>
+            <!-- Using build-in angular pipe to round up the decimal number -->
+            <!-- https://angular.io/api/common/DecimalPipe -->
+            <p class="card-text">Temperature: {{temperature | number: '1.0-0'}} °{{units=='imperial' ? 'F' : 'C'}}</p>
+            <p class="card-text">Feels like: {{feelsLikeTemp | number: '1.0-0'}} °{{units=='imperial' ? 'F' : 'C'}}</p>
+            <p class="card-text">Pressure: {{pressure}} hPa</p>
+            <p class="card-text">Humidity: {{humidity}} %</p>
+        </div>
+        <div class="card-footer bg-transparent border-success">
+            <form class="myRadioButtons">
+                <label class="radio-inline">
+                    <input type="radio" (change)="onRadioButtonChange()" name="unitsRadioButtons"
+                        [checked]="units=='imperial' ? true : false">°F
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" (change)="onRadioButtonChange()" name="unitsRadioButtons">°C
+                </label>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+
+services:
+  db:
+    image: postgres:latest
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: ./backend  # Le chemin vers votre dossier backend (Flask)
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+    ports:
+      - "5432:5432"
+    command: ["flask", "run", "--host=0.0.0.0"]
+
+  frontend:
+    build: ./frontend  # Le chemin vers votre dossier frontend (Angular)
+    ports:
+      - "4200:80"  # Rediriger le port 80 du conteneur vers le port 80 de l'hôte
+    depends_on:
+      - web # Assurez-vous que le backend est prêt avant de lancer le frontend
+
+volumes:
+  pgdata:
