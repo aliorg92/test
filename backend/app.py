@@ -85,6 +85,5 @@ def delete_weather(id):
     db.session.commit()
     return jsonify({"message": "Weather data deleted successfully"})
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)

@@ -1,12 +1,11 @@
 version: "3.8"
 
 services:
-  backend:
+  flask_backend:
     container_name: flask_backend
+    image: flask_backend
     restart: always
     env_file:
       - .env
     ports:
       - "5000:5000"
-    volumes:
-      - .:/app

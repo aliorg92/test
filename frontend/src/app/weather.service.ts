@@ -7,7 +7,7 @@ import { Weather } from './model/weather.model';
   providedIn: 'root'
 })
 export class WeatherService {
-  private apiUrl = 'http://127.0.0.1:5000/weather'; // URL de ton backend Flask
+  private apiUrl = 'http://4.251.99.227:5000/weather'; // URL de ton backend Flask
 
 
   constructor(private http: HttpClient) { }
